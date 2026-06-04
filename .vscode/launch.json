@@ -5,12 +5,14 @@
       "name": "Launch test_app",
       "type": "cppdbg",
       "request": "launch",
-      "program": "${workspaceFolder}/test_app",
+      "program": "${workspaceFolder}/build/test_app",
       "args": ["hello", "world"],
       "stopAtEntry": false,
       "cwd": "${workspaceFolder}",
       "environment": [],
       "externalConsole": false,
+      "console": "internalConsole",
+      "internalConsoleOptions": "openOnSessionStart",
       "preLaunchTask": "CMake: build",
       "MIMode": "lldb"
     }

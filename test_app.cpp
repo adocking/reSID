@@ -4,6 +4,8 @@
 #include <cmath>
 #include <unistd.h>
 
+#include <sid.h>
+
 int tester();
 
 int main(int argc, char* argv[]) {
@@ -18,6 +20,21 @@ int main(int argc, char* argv[]) {
         std::cout << "\nUsage: ./test_app [args...]" << std::endl;
         std::cout << "Example: ./test_app hello world" << std::endl;
     }
+
+    using namespace reSID;
+
+    printf( "Sid start\n" );
+    std::cout << "SID: tone..." << std::endl;
+
+    SID sid;
+    sid.reset();
+    sid.set_chip_model( MOS8580 );
+
+    sid.set_sampling_parameters(
+        985248,                 // PAL C64 clock
+        SAMPLE_INTERPOLATE,
+        44100                   // audio sample rate
+    );
 
     tester();
 
@@ -36,7 +53,7 @@ static OSStatus render(void *inRef,
 {
     float *buffer = (float *)ioData->mBuffers[0].mData;
 
-    double freq = 120.0;
+    double freq = 620.0;
     double phaseInc = 2.0 * M_PI * freq / sampleRate;
 
     for (UInt32 i = 0; i < inNumberFrames; i++)
