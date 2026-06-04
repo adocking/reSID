@@ -1,4 +1,11 @@
-/src/autom4te.cache
+*.DS_Store
+*.cache
+*.m4
 /src/build-aux
 /src/build
-*.m4
+src/configure
+src/Makefile.in
+/test_app.dSYM
+test_app
+/build
+

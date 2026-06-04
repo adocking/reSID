@@ -1,0 +1,18 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Launch test_app",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/test_app",
+      "args": ["hello", "world"],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}",
+      "environment": [],
+      "externalConsole": false,
+      "preLaunchTask": "CMake: build",
+      "MIMode": "lldb"
+    }
+  ]
+}
