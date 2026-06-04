@@ -1,0 +1,4 @@
+/src/autom4te.cache
+/src/build-aux
+/src/build
+*.m4
