@@ -40,7 +40,7 @@ int main(int argc, char* argv[]) {
     );
 
     // frequency (lower for audible envelope)
-    uint16_t freq = 6000;
+    uint16_t freq = 3000;
     sid.write(0x00, freq & 0xff);
     sid.write(0x01, freq >> 8);
 
@@ -59,6 +59,7 @@ int main(int argc, char* argv[]) {
     int failsafe = 100000;
     int seconds = 5;
     int sampleCount = seconds * sampleRate;
+    bool voice = false;
     _buffer.resize( sampleCount );
 
     while ( offset < sampleCount && failsafe -- ) 
@@ -69,7 +70,15 @@ int main(int argc, char* argv[]) {
 
         if ( out == 0 && clockDelta == 0 ) { break; }
 
-        printf( "offset: %i\n", offset );
+        freq += 5;
+        sid.write(0x00, freq & 0xff);
+        sid.write(0x01, freq >> 8); 
+
+        if ( offset > sampleCount / 2 && !voice )
+        {
+            voice = true;
+            sid.write(0x04, 0x10 | 0x01);
+        }
     }
 
     tester();
