@@ -27,6 +27,9 @@ target_compile_options(test_app PRIVATE
 )
 
 if(APPLE)
+    target_link_options(test_app PRIVATE
+        "-Wl,-map,${CMAKE_BINARY_DIR}/test_app.map"
+    )
     find_library(AudioToolbox_FRAMEWORK AudioToolbox)
     find_library(CoreAudio_FRAMEWORK CoreAudio)
     if(AudioToolbox_FRAMEWORK AND CoreAudio_FRAMEWORK)
